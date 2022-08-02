@@ -64,16 +64,17 @@ function makeGraph3() {
    // console.log(object_height_meters)
 
 
-   var obj_height_mm_arr = []
-   for(var i = 0 ; i < 10; i++){
-    obj_height_mm_arr[i] = i/9.1;
+   var obj_height_m_arr = [1, 3, 5, 7, 10]
+   var object_height_in_pixels = [];
+   for(var i = 0 ; i < obj_height_m_arr.length; i++){
+    object_height_in_pixels[i] = ((obj_height_m_arr[i] * focal_length) / document.getElementById("distance").value) * sensor_height_pixels / sensor_height_mm
 
    }
 
-    for (let i = 0; i < obj_height_mm_arr.length; i++) {
+    for (let i = 0; i < object_height_in_pixels.length; i++) {
 
 
-        object_sizes[i] = (obj_height_on_sensor * sensor_height_pixels ) / sensor_height_mm 
+        object_sizes[i] = (object_height_in_pixels[i] * sensor_height_pixels ) / sensor_height_mm 
       
     //focal_length * (object_height_meters) / document.getElementById("distance").value
         //(object_height_meters * sensor_height_mm ) / sensor_height_mm;
