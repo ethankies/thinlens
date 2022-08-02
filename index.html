@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thin Lens</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+    <script src="p5canvas.js"></script>
+    
+</head>
+
+<body>
+    <h1>Thin Lens Graphs</h1>
+    <div class="chart-container">
+        <canvas id="chart1"></canvas>
+        <!-- <canvas id="chart2"></canvas> -->
+      
+        <div id="pixelP5Chart"></div>
+        <canvas id="chart3"></canvas>
+    </div>
+
+    <p>Sensor parameters</p>
+    <div class="affectAll">
+       
+        
+        <!-- These params affect each graphs equally -->
+        <label for="fname">Sensor height (px):</label>
+        <input type="text" id="px" name="fname" value="512"><br><br>
+        <label for="fname">Focal length (mm):</label>
+        <input type="text" id="fl" name="fname" value="32"><br><br>
+    </div>
+
+    <label for="fname">Distance (m):</label>
+    <input type="text" id="distance" name="fname" value="32"><br><br>
+    <label for="fname">Pixels (px):</label>
+    <input type="text" id="fname" name="fname"><br><br>
+    <label for="fname">Physical height (m):</label>
+    <input type="text" id="physical" name="fname" value="0.333333333"><br><br>
+
+    <button id="refresh" onclick="changeData()">/Refresh charts</button>
+    
+
+</body>
+<script src="chart.js"></script>
+
+</html>
