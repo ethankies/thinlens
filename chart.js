@@ -65,12 +65,12 @@ function makeGraph3() {
    // console.log(object_height_meters)
 
 
-    obj_height_m_arr = [1,2,3,4,5]
+    obj_height_m_arr = [0.333, 0.5, 1, 2, 5, 10, 15]
 
    var object_height_in_pixels = [];
 
  
-   for(var i = 0 ; i < obj_height_m_arr.length; i++){
+   for(var i = 0 ; i < 10; i++){
     object_sizes[i] = ((obj_height_m_arr[i] * focal_length) / document.getElementById("distance").value) * sensor_height_pixels / sensor_height_mm
 
    }
@@ -115,6 +115,7 @@ const data2 = {
 const config = {
     type: 'line',
     data: data,
+   
     options: {
         scales: {
             y: {
@@ -169,12 +170,15 @@ const config2 = {
     responsive: false
 };
 const data3 = {
-    labels: ['0', '5', '10', '15'],//object_sizes,
+    labels: [0.333, 0.5, 1, 2, 5, 10, 15] ,//object_sizes,
+    
     datasets: [{
         label: 'Relative size at distance',
+        pointRadius: 5,
+        pointHoverRadius: 7,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 209, 115)',
-        data:  object_sizes//labels3
+        data: object_sizes//[5, 10, 15, 20, 25] //object_sizes//labels3
     }]
 };
 
@@ -182,6 +186,7 @@ const config3 = {
     type: 'scatter',
     data: data3,
     options: {
+     
         spanGaps: true,
         scales: {
             y: {
@@ -199,6 +204,18 @@ const config3 = {
             }
         },
         plugins: {
+            tooltip:{
+                callbacks:{
+                    //footer: footer,
+                    label: function(context){
+                        var x = context.parsed.x
+                        var y =context.parsed.y
+                        var d = + document.getElementById("distance").value
+                        var label = `A ${x}m object at ${d}m distance takes up ${y} pixels`;
+                        return label;
+                    }
+                }
+            },
             title:{
                 display: true,
                 text: 'Pixel Size of Different Size Objects at ' + document.getElementById("distance").value + ' meters',
@@ -240,3 +257,15 @@ $("input").on("change keyup paste", function(){
     changeData();
 
 })
+
+
+    //slider
+
+    var slider = document.getElementById("distance");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+    
+    // Update the current slider value (each time you drag the slider handle)
+    slider.oninput = function() {
+      output.innerHTML = this.value;
+    }

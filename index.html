@@ -16,7 +16,7 @@
 
 <body>
     <h1>Thin Lens Graphs</h1>
- 
+ <p>Ethan Kies, Ben Carthron, Matt Deardorff</p>
     <div class="chart-container">
         <div id="chartjs" style="margin-right: 20px;">
             <canvas id="chart1" ></canvas>
@@ -31,31 +31,37 @@
         
     </div>
 
-   
-    <div class="affectAll">
-        <h3>Sensor parameters</h3>
-        
-        <!-- These params affect each graphs equally -->
-        <label for="fname">Sensor height (px):</label>
-        <input type="text" id="px" name="fname" value="512"><br><br>
-        <label for="fname">Focal length (mm):</label>
-        <input type="text" id="fl" name="fname" value="32"><br><br>
-        <label for="fname">Distance (m):</label>
-    <input type="text" id="distance" name="fname" value="32"><br><br>
+<div class="affectAll">
+    <h3>Sensor parameters</h3>
+
+    <!-- These params affect each graphs equally -->
+    <label for="fname">Sensor height (px):</label>
+    <input type="text" id="px" name="fname" value="512"><br><br>
+
+    <label for="fname">Focal length (mm):</label>
+    <input type="text" id="fl" name="fname" value="32"><br><br>
+
+    <label for="fname" id="distlabel">Distance <span id="demo"></span>(m): </label>
+    <input type="range" min="1" max="1000" value="32" id="distance" name="fname" value="32" class="slider"><br><br>
+
     <label for="fname">Pixels (px):</label>
     <input type="text" id="fname" name="fname" value="1080"><br><br>
+    
     <label for="fname">Physical height (m):</label>
     <input type="text" id="physical" name="fname" value="0.333333333"><br><br>
+
     <label for="fname">Sensor Height (mm)</label>
     <input type="text" id="sens" name="fname" value="25"><br><br>
 
     <button id="refresh" onclick="changeData()">Refresh charts</button>
-    </div>
+</div>
 
     
     <div class="linkz">
         <a href="https://www.scantips.com/lights/subjectdistance.html">Thin Lens</a>
+        |
         <a href="https://scantips.com/lights/fieldofviewmath.html">Equations</a>
+        |
         <a href="https://github.com/ethankies/thinlens">Code</a>
     </div>
    
@@ -63,5 +69,8 @@
 
 </body>
 <script src="chart.js"></script>
+<script>
+
+</script>
 
 </html>
