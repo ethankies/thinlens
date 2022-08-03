@@ -169,6 +169,11 @@ const config = {
                       }
                       
                         return label;
+                    },
+
+                    title: function(tooltipItems, data) {
+                     
+                        return 'Distance: ' + Math.round(tooltipItems[0].raw) + 'm';
                     }
                 }
             },
@@ -281,7 +286,7 @@ const chart1 = new Chart(
     document.getElementById('chart1'),
     config
 );
-
+chart1.options.plugins.title.text ='Pixel Size vs Distance for a ' +  document.getElementById("physical").value + ' meter object';
 
 
 const chart3 = new Chart(
@@ -295,6 +300,7 @@ function changeData(data) {
     makeGraph1();
     makeGraph3();
     chart3.options.plugins.title.text ='Pixel Size of Different Size Objects at ' + document.getElementById("distance").value + ' meters';
+    chart1.options.plugins.title.text ='Pixel Size vs Distance for a ' +  document.getElementById("physical").value + ' meter object';
     chart1.update();
    // setPhysical.update();
     chart3.update();
