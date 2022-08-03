@@ -1,14 +1,93 @@
 .chart-container{
-    margin: 12px;
-    position: relative;
-    height:300px;
-    width:500px;
+    /* margin-bottom: 12px;
     display: flex;
-    
+    justify-content: center;
+    flex-wrap:wrap;
+    width: 500px;
+ 
+    position: relative;
+     */
+ 
+    display: flex;
+    /* margin-left: 20%;
+    margin-right: 20%; */
+}
+
+canvas {
+    /* flex: 2;
+    border: 2px solid yellow;
+    width: 500px;
+    height: 400px; */
 }
 
 .affectAll{
-    width: 500px;
-    border: 2px solid #00A4BD;
-    padding: 10px;
+    width: 50%;
+    margin: auto;
+    margin-top: 15px;
+    /* border: 2px solid #00A4BD; */
+    padding-right: 10px;
+/*     
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; */
+}
+
+input{
+    text-align: right;
+    justify-content: right;
+    float: right;
+}
+
+h1{
+    text-align: center;
+}
+
+h3{
+    border-bottom: 2px solid #ff6373;
+}
+.linkz{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+   
+
+}
+a {
+    text-decoration: black  underline 1px;
+    color: #ff6373;
+}
+button{
+
+/* CSS */
+
+  background-color: rgba(148, 66, 66, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+}
+
+#chartjs {
+    flex: 1;
+    justify-content: center;
+}
+
+body{
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
