@@ -91,6 +91,8 @@ button{
 
 body{
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #cecece2d;
+    color: black;
 }
 p{
     text-align: center;

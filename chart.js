@@ -11,8 +11,11 @@ const real_object_height = [];
 const object_sizes = [];
 var obj_height_on_sensor = focal_length * (object_height_meters) / document.getElementById("distance").value
 //x values
-const labels =
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+const labels =[]
+for(var i = 0; i < 80; i++){
+    labels[i] = i
+}
+   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
 const labels2 = [500,400,300,200,100,50,25,0];
 const labels3 = [1,2,3,4,5,6,7,8,9,10];
 var obj_height_m_arr = []
@@ -93,9 +96,25 @@ function makeGraph3() {
 const data = {
     labels: labels,
     datasets: [{
-        label: 'Distance (m)',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 0)',
+        pointRadius: 5,
+        pointHoverRadius: 7,
+     label: 'Distance (m)',
+    
+        backgroundColor: context=>{
+            if(context.index < 10){
+                return 'rgb(255, 99, 132)'
+            } else if (context.index < 65){
+              
+                return 'rgb(102, 99, 255)'
+             
+            } else {
+                return 'rgb(122, 255, 99)'
+            }
+        },//'rgb(255, 99, 132)',
+        borderColor: context =>{
+         return 'rgb(255, 99, 132)'
+          
+        }, //'rgb(255, 99, 0)',
         data: distance_to_object,
     }]
 };
@@ -132,6 +151,27 @@ const config = {
             }
         },
         plugins: {
+            tooltip:{
+                callbacks:{
+                    label: function(context){
+                        var x = context.parsed.x
+                     //   var y =context.parsed.y
+                      //  var d = + document.getElementById("distance").value
+                  
+                      //  var label = `A ${x}m object at ${d}m distance takes up ${y} pixels`;
+                      var label
+                      if(context.parsed.x < 10){
+                         label = `${x} pixels is detectable`;
+                      } else if (context.parsed.x < 65){
+                        label = `${x} pixels is recognizable`;
+                      } else {
+                          label = `${x} pixels is identifiable`;
+                      }
+                      
+                        return label;
+                    }
+                }
+            },
             title:{
                 display: true,
                 text: 'Pixel Size vs Distance',
@@ -178,7 +218,10 @@ const data3 = {
         pointHoverRadius: 7,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 209, 115)',
-        data: object_sizes//[5, 10, 15, 20, 25] //object_sizes//labels3
+        data: object_sizes,//[5, 10, 15, 20, 25] //object_sizes//labels3
+      //  color: 'white',
+        //borderColor: 'white',
+        //backgroundColor: 'white'
     }]
 };
 
@@ -189,19 +232,25 @@ const config3 = {
      
         spanGaps: true,
         scales: {
+          
             y: {
                 title: {
                     display: true,
-                    text: 'Pixel Size'
+                    text: 'Pixel Size',
+                    //color: "#FFFFFF"
                     
                 }
             },
             x: {
+              
                 title: {
                     display: true,
-                    text: 'Physical Size (m)'
+                    text: 'Physical Size (m)',
+                   // color: "#FFFFFF"
                 }
-            }
+            },
+           
+       
         },
         plugins: {
             tooltip:{
@@ -211,9 +260,11 @@ const config3 = {
                         var x = context.parsed.x
                         var y =context.parsed.y
                         var d = + document.getElementById("distance").value
+                  
                         var label = `A ${x}m object at ${d}m distance takes up ${y} pixels`;
                         return label;
                     }
+   
                 }
             },
             title:{
@@ -230,8 +281,6 @@ const chart1 = new Chart(
     document.getElementById('chart1'),
     config
 );
-
-
 
 
 
